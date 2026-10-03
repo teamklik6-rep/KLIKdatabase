@@ -1,0 +1,7 @@
+{
+  "name": "Create TMA Color Variables",
+  "id": "tma-color-variables",
+  "api": "1.0.0",
+  "main": "code.js",
+  "editorType": ["figma"]
+}
