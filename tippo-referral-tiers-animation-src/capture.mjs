@@ -17,7 +17,7 @@ const chromium = await (async () => {
 const here = path.dirname(fileURLToPath(import.meta.url));
 const preview = path.resolve(here, '..', 'tippo-referral-tiers-animation', 'preview.html');
 const outDir = path.resolve(process.argv[2] || path.join(here, 'frames'));
-const times = (process.argv[3] || '0.25,0.9,1.4,2.1,2.8,3.4,4.0,4.6,5.3,6.2,6.8').split(',').map(Number);
+const times = (process.argv[3] || '0.3,0.9,1.5,2.1,2.7,3.3,3.9,4.5,5.1,5.7').split(',').map(Number);
 fs.mkdirSync(outDir, { recursive: true });
 
 const browser = await chromium.launch();
