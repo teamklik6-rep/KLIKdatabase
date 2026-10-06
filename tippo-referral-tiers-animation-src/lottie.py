@@ -23,7 +23,8 @@ COLORS = {
     "yellow": "#F2B84B", "blue": "#6F9BEB", "grey": "#717171", "pink": "#E573A5", "purple": "#9B7BF0",
 }
 
-FLOW = {"loop": 6.0, "every": 1.5, "leg1": 1.1, "pause": 0.2, "leg2": 1.2, "tier1Offset": 0.75, "fadeIn": 0.1, "fadeOut": 0.15}
+FLOW = {"loop": 6.0, "every": 1.5, "leg1": 1.1, "pause": 0.2, "leg2": 1.2, "tier1Offset": 0.75, "fadeIn": 0.25, "fadeOut": 0.3}
+EASE = {"linear": (0, 0, 1, 1), "outCubic": (0.33, 1, 0.68, 1), "inCubic": (0.32, 0, 0.67, 0)}
 N_DOTS = round(FLOW["loop"] / FLOW["every"])
 
 LAYOUTS = {
@@ -68,14 +69,14 @@ def const(val):
     return {"a": 0, "k": val}
 
 
-def kf(keys, hold=False):
-    """keys: [(sec, value(list))] → linear animated property (hold=True: step keyframes)."""
+def kf(keys):
+    """keys: [(sec, value(list)[, ease])] → animated property; `ease` is the curve towards the NEXT keyframe (default linear)."""
     out = []
-    for i, (sec, val) in enumerate(keys):
+    for i, key in enumerate(keys):
+        sec, val = key[0], key[1]
+        x1, y1, x2, y2 = EASE[key[2] if len(key) > 2 else "linear"]
         n = len(val)
-        k = {"t": F(sec), "s": val, "o": {"x": [0] * n, "y": [0] * n}, "i": {"x": [1] * n, "y": [1] * n}}
-        if hold:
-            k["h"] = 1
+        k = {"t": F(sec), "s": val, "o": {"x": [x1] * n, "y": [y1] * n}, "i": {"x": [x2] * n, "y": [y2] * n}}
         if i < len(keys) - 1:
             k["e"] = keys[i + 1][1]
         out.append(k)
@@ -114,8 +115,8 @@ def person(cx, cy, R):
     return [ellipse(cx, cy - R * 0.21, R * 0.25, fill="#FFFFFF", name="head"), path_shape(v, i, o, True, fill="#FFFFFF", name="body")]
 
 
-def layer(name, shapes, op=None, pos=None, opacity=None):
-    ks = {"a": const([0, 0, 0]), "p": pos if pos is not None else const([0, 0, 0]), "s": const([100, 100, 100]),
+def layer(name, shapes, op=None, pos=None, opacity=None, scale=None):
+    ks = {"a": const([0, 0, 0]), "p": pos if pos is not None else const([0, 0, 0]), "s": scale if scale is not None else const([100, 100, 100]),
           "o": opacity if opacity is not None else const(100), "r": const(0)}
     return {"ddd": 0, "ind": 0, "ty": 4, "nm": name, "sr": 1, "ks": ks, "ao": 0, "shapes": shapes, "ip": 0, "op": F(op or FLOW["loop"]), "st": 0, "bm": 0}
 
@@ -164,19 +165,26 @@ def build(variant):
     def xyz(p):
         return [p[0], p[1], 0]
 
+    FI, FO = FLOW["fadeIn"], FLOW["fadeOut"]
+
+    def leg_keys(t0, t1):
+        """scale (%, 3D) and opacity keys for one leg: grow+fade in over FI, shrink+fade out over the last FO."""
+        sc = [(t0, [0, 0, 100], "outCubic"), (t0 + FI, [100, 100, 100]), (t1 - FO, [100, 100, 100], "inCubic"), (t1, [0, 0, 100])]
+        op = [(t0, [0]), (t0 + FI, [100]), (t1 - FO, [100]), (t1, [0])]
+        return sc, op
+
     def you_dot(t0, n):
         t1 = t0 + FLOW["leg1"]; t2 = t1 + FLOW["pause"]; t3 = t2 + FLOW["leg2"]
         pos = kf([(t0, xyz(Fl["a1Start"])), (t1, xyz(Fl["a1End"])), (t2, xyz(Fl["a2Start"])), (t3, xyz(Fl["a2End"]))])
         pos["k"][1]["h"] = 1  # jump to the other side of Tier 1 after the pause
-        op = kf([(t0 - 0.01, [0]), (t0, [0]), (t0 + FLOW["fadeIn"], [100]), (t1 - 0.01, [100]), (t1, [0]), (t2, [0]),
-                 (t2 + FLOW["fadeIn"], [100]), (t3 - FLOW["leg2"] * FLOW["fadeOut"], [100]), (t3, [0]), (t3 + 0.01, [0])])
-        return layer(f"Dot from You {n}", dot_shapes(), pos=pos, opacity=op)
+        sc1, op1 = leg_keys(t0, t1); sc2, op2 = leg_keys(t2, t3)
+        return layer(f"Dot from You {n}", dot_shapes(), pos=pos, scale=kf(sc1 + sc2), opacity=kf(op1 + op2))
 
     def tier1_dot(t0, n):
         t3 = t0 + FLOW["leg2"]
         pos = kf([(t0, xyz(Fl["a2Start"])), (t3, xyz(Fl["a2End"]))])
-        op = kf([(t0 - 0.01, [0]), (t0, [0]), (t0 + FLOW["fadeIn"], [100]), (t3 - FLOW["leg2"] * FLOW["fadeOut"], [100]), (t3, [0]), (t3 + 0.01, [0])])
-        return layer(f"Dot from Tier 1 {n}", dot_shapes(), pos=pos, opacity=op)
+        sc, op = leg_keys(t0, t3)
+        return layer(f"Dot from Tier 1 {n}", dot_shapes(), pos=pos, scale=kf(sc), opacity=kf(op))
 
     for i in range(N_DOTS):
         e = i * FLOW["every"]

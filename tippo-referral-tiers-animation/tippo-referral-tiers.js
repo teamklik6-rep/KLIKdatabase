@@ -42,8 +42,8 @@
     pause: 0.2,    // hidden "under" Tier 1
     leg2: 1.2,     // along arrow 2: Tier 1 → Tier 2
     tier1Offset: 0.75, // Tier 1 dots start half a period after the You dots
-    fadeIn: 0.1,
-    fadeOut: 0.15  // last 15 % of a leg that ends at an arrowhead
+    fadeIn: 0.25,  // seconds: scale 0 → 1 (ease-out) + opacity 0 → 1 at the start of every leg
+    fadeOut: 0.3   // seconds: scale 1 → 0 (ease-in) + opacity 1 → 0 at the end of every leg
   };
   var N_DOTS = Math.round(FLOW.loop / FLOW.every); // 4 of each kind per loop
 
@@ -209,9 +209,20 @@
   // ---------------------------------------------------------------------------
   // Frame: only the dots move. state = f(t), seamless over FLOW.loop
   // ---------------------------------------------------------------------------
-  function place(g, pos, op) {
-    g.setAttribute('transform', 'translate(' + pos[0] + ' ' + pos[1] + ')');
-    g.setAttribute('opacity', Math.max(0, Math.min(1, op)));
+  function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function outCubic(u) { return 1 - Math.pow(1 - u, 3); }
+  function inCubic(u) { return u * u * u; }
+  // Smooth in/out of a dot on a leg: `age` is time since the leg started, `dur` the leg's duration.
+  // Returns [scale, opacity]: grow + fade in over FLOW.fadeIn, shrink + fade out over the last FLOW.fadeOut.
+  function inOut(age, dur) {
+    var a = clamp01(age / FLOW.fadeIn);
+    var b = clamp01((dur - age) / FLOW.fadeOut);
+    var sIn = outCubic(a), sOut = 1 - inCubic(1 - b);
+    return [Math.min(sIn, sOut), Math.min(a, b)];
+  }
+  function place(g, pos, so) {
+    g.setAttribute('transform', 'translate(' + pos[0] + ' ' + pos[1] + ') scale(' + so[0] + ')');
+    g.setAttribute('opacity', clamp01(so[1]));
   }
   function hide(g) { g.setAttribute('opacity', 0); }
 
@@ -221,19 +232,18 @@
       // dot from You: arrow 1 → hidden under Tier 1 → arrow 2
       age = ((t - i * FLOW.every) % FLOW.loop + FLOW.loop) % FLOW.loop;
       if (age < FLOW.leg1) {
-        place(S.fromYou[i], lerp(F.a1Start, F.a1End, age / FLOW.leg1), age / FLOW.fadeIn);
+        place(S.fromYou[i], lerp(F.a1Start, F.a1End, age / FLOW.leg1), inOut(age, FLOW.leg1));
       } else if (age < FLOW.leg1 + FLOW.pause) {
         hide(S.fromYou[i]);
       } else if (age < FLOW.leg1 + FLOW.pause + FLOW.leg2) {
-        p = (age - FLOW.leg1 - FLOW.pause) / FLOW.leg2;
-        place(S.fromYou[i], lerp(F.a2Start, F.a2End, p), Math.min((age - FLOW.leg1 - FLOW.pause) / FLOW.fadeIn, (1 - p) / FLOW.fadeOut));
+        p = age - FLOW.leg1 - FLOW.pause;
+        place(S.fromYou[i], lerp(F.a2Start, F.a2End, p / FLOW.leg2), inOut(p, FLOW.leg2));
       } else hide(S.fromYou[i]);
 
       // dot from Tier 1: arrow 2 only
       age = ((t - i * FLOW.every - FLOW.tier1Offset) % FLOW.loop + FLOW.loop) % FLOW.loop;
       if (age < FLOW.leg2) {
-        p = age / FLOW.leg2;
-        place(S.fromTier1[i], lerp(F.a2Start, F.a2End, p), Math.min(age / FLOW.fadeIn, (1 - p) / FLOW.fadeOut));
+        place(S.fromTier1[i], lerp(F.a2Start, F.a2End, age / FLOW.leg2), inOut(age, FLOW.leg2));
       } else hide(S.fromTier1[i]);
     }
   }

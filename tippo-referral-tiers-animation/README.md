@@ -47,8 +47,9 @@ Green dots, 8 px (mobile 7), with a background-coloured halo so they read on top
 | **From You** | along arrow 1 from its start to its head (You → Tier 1), hidden while "under" Tier 1, then along arrow 2 from its start to its head (Tier 1 → Tier 2) | one every 1.5 s (4 per loop); arrow 1 leg 1.1 s, pause under Tier 1 0.2 s, arrow 2 leg 1.2 s |
 | **From Tier 1** | along arrow 2 from its start to its head (Tier 1 → Tier 2) | one every 1.5 s, offset by 0.75 s from the You dots; 1.2 s |
 
-Dots run only along the arrow lines (never across the nodes or labels): fade in over 0.1 s at the start of a leg,
-fade out on the last 15 % before the arrowhead. Constant speed along each leg. The loop is seamless
+Dots run only along the arrow lines (never across the nodes or labels). On every leg a dot appears smoothly
+(scale 0 → 1 with ease-out plus opacity 0 → 1, 0.25 s) and disappears smoothly (scale 1 → 0 with ease-in plus
+opacity 1 → 0 over the last 0.3 s), including the dive under Tier 1. Constant speed along each leg. The loop is seamless
 (dots that are in flight at 6.0 s continue from 0.0 s).
 
 ## Mobile layout (350×108)
