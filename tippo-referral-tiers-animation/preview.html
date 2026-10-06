@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tippo — Referral tiers animation preview</title>
+<style>
+  :root { color-scheme: light; }
+  body { margin: 0; background: #F6F7F6; font-family: "Non Bureau", Inter, system-ui, sans-serif; color: #020408; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px 60px; }
+  h1 { font-size: 18px; font-weight: 600; margin: 0 0 6px; }
+  p.sub { margin: 0 0 24px; color: #8C8F93; font-size: 13px; }
+  .card { background: #fff; border-radius: 32px; padding: 40px 48px; margin-bottom: 24px; box-shadow: 0 1px 0 rgba(2,4,8,.04); }
+  .card h2 { font-size: 12px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; color: #8C8F93; margin: 0 0 24px; }
+  .stage { margin: 0 auto; }
+  #desktop { width: 874px; max-width: 100%; }
+  #mobile { width: 350px; max-width: 100%; }
+  .controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 20px; }
+  button { font: inherit; font-size: 13px; font-weight: 500; padding: 8px 14px; border-radius: 100px; border: 0; background: #020408; color: #fff; cursor: pointer; }
+  button.ghost { background: rgba(2,4,8,.06); color: #020408; }
+  input[type=range] { flex: 1; min-width: 160px; }
+  .t { font-variant-numeric: tabular-nums; font-size: 13px; color: #8C8F93; min-width: 64px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Referral — You → Tier 1 → Tier 2</h1>
+  <p class="sub">Loop 7 s · desktop 874×210 (Figma 734:18948) · mobile 350×92 · scrub with the slider, both stages stay in sync.</p>
+
+  <div class="card">
+    <h2>Desktop · 874 × 210</h2>
+    <div id="desktop" class="stage"></div>
+  </div>
+
+  <div class="card">
+    <h2>Mobile · 350 × 92</h2>
+    <div id="mobile" class="stage"></div>
+  </div>
+
+  <div class="controls">
+    <button id="play">Pause</button>
+    <button id="restart" class="ghost">Restart</button>
+    <span class="t" id="time">0.00 s</span>
+    <input id="scrub" type="range" min="0" max="6.999" step="0.01" value="0">
+  </div>
+</div>
+
+<script src="tippo-referral-tiers.js"></script>
+<script>
+  var desktop = TippoReferralTiers.mount(document.getElementById('desktop'), { variant: 'desktop', bg: '#fff' });
+  var mobile  = TippoReferralTiers.mount(document.getElementById('mobile'),  { variant: 'mobile',  bg: '#fff' });
+  var playing = true;
+  var playBtn = document.getElementById('play'), scrub = document.getElementById('scrub'), timeEl = document.getElementById('time');
+
+  playBtn.onclick = function () {
+    playing = !playing;
+    playBtn.textContent = playing ? 'Pause' : 'Play';
+    if (playing) { mobile.seek(desktop.time); desktop.play(); mobile.play(); } else { desktop.pause(); mobile.pause(); }
+  };
+  document.getElementById('restart').onclick = function () { desktop.restart(); mobile.restart(); playing = true; playBtn.textContent = 'Pause'; };
+  scrub.oninput = function () {
+    if (playing) { playing = false; playBtn.textContent = 'Play'; desktop.pause(); mobile.pause(); }
+    desktop.seek(+scrub.value); mobile.seek(+scrub.value);
+  };
+  (function tick() {
+    if (playing) { scrub.value = desktop.time; }
+    timeEl.textContent = desktop.time.toFixed(2) + ' s';
+    requestAnimationFrame(tick);
+  })();
+
+  // Used by the capture script: window.__seek(t) freezes both stages at t.
+  window.__seek = function (t) { playing = false; desktop.pause(); mobile.pause(); desktop.seek(t); mobile.seek(t); };
+</script>
+</body>
+</html>
