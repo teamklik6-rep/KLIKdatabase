@@ -2,10 +2,10 @@
 
 Animated version of the referral infographic from the Home page
 (Figma «Tippo Website» → Home v2 Desktop 1920, node `734:18948`, 874×210;
-mobile layout from Home — Mobile 390: vertical flow, 350×418).
+mobile layout from Home — Mobile 390, 350×108).
 
-**The scene is static — identical to the Figma illustration. Only the reward dots move,
-against the arrows, towards You:** right → left on desktop, bottom → top on mobile.
+**The scene is static — identical to the Figma illustration. Only the dots move, along the arrows
+in the arrows' direction: You → Tier 1 → Tier 2, left to right.**
 
 ## Files
 
@@ -32,7 +32,7 @@ Sources: `../tippo-referral-tiers-animation-src/` — `lottie.py` (Lottie export
 </script>
 ```
 
-The container keeps the layout's aspect ratio (`874 / 210` or `350 / 418`). Font: inherits
+The container keeps the layout's aspect ratio (`874 / 210` or `350 / 108`). Font: inherits
 `"Non Bureau", Inter, system-ui` — load Non Bureau on the page. `prefers-reduced-motion: reduce`
 shows the static scene without dots.
 
@@ -40,14 +40,18 @@ Lottie: `lottie.loadAnimation({ container, path: 'lottie/tippo-referral-tiers-de
 
 ## Dots (loop 6.0 s, same timing on both breakpoints)
 
+Green dots, 8 px (mobile 7), with a background-coloured halo so they read on top of the arrow line.
+
 | Dot | Route | Timing |
 |---|---|---|
-| **Tier 2 reward** — small, 7 px (mobile 6), green with a background-coloured halo | along arrow 2 from its head back to its start (Tier 2 → Tier 1), hidden while "under" Tier 1, then along arrow 1 from its head to its start (Tier 1 → You) | one every 1.5 s (4 per loop); arrow 2 leg 1.2 s, pause under Tier 1 0.2 s, arrow 1 leg 1.1 s; fades in over 0.1 s, fades out on the last 15 % before You |
-| **Tier 1 reward** — big, 9 px (mobile 8) | along arrow 1 from its head to its start (Tier 1 → You) | one every 1.5 s, offset by 0.75 s from the Tier 2 dots; 1.1 s |
+| **From You** | along arrow 1 from its start to its head (You → Tier 1), hidden while "under" Tier 1, then along arrow 2 from its start to its head (Tier 1 → Tier 2) | one every 1.5 s (4 per loop); arrow 1 leg 1.1 s, pause under Tier 1 0.2 s, arrow 2 leg 1.2 s |
+| **From Tier 1** | along arrow 2 from its start to its head (Tier 1 → Tier 2) | one every 1.5 s, offset by 0.75 s from the You dots; 1.2 s |
 
-Dots run only along the arrow lines (never across the nodes or labels), fading in at the head and out at the start of each arrow. Constant speed along each leg. The loop is seamless (dots that are in flight at 6.0 s continue from 0.0 s).
+Dots run only along the arrow lines (never across the nodes or labels): fade in over 0.1 s at the start of a leg,
+fade out on the last 15 % before the arrowhead. Constant speed along each leg. The loop is seamless
+(dots that are in flight at 6.0 s continue from 0.0 s).
 
-## Mobile layout (350×418)
+## Mobile layout (350×108)
 
-Vertical flow, elements at 0.8× desktop size: You (74 px) → arrow 44 px with «INVITES» to its right →
-Tier 1 (three 41 px avatars) → arrow → Tier 2 ring (89 px). Labels 16 px under each node, «INVITES» 10 px.
+Horizontal, like desktop, with elements at ~0.7× desktop size so they stay legible: You 64 px, Tier 1 three
+36 px avatars, Tier 2 ring 78 px; arrows 43.5 px with «INVITES» 9 px above; labels 14 px under each node.

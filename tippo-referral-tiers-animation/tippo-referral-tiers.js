@@ -1,10 +1,10 @@
 /*!
- * Tippo — Referral tiers infographic (You → Tier 1 → Tier 2): reward-dots animation
+ * Tippo — Referral tiers infographic (You → Tier 1 → Tier 2): invite-dots animation
  * Source design: Figma "Tippo Website" → Home v2 Desktop 1920, node 734:18948 (874×210)
- *                mobile: Home — Mobile 390, "Referral — infographic … — mobile" (350×418, vertical flow)
+ *                mobile: Home — Mobile 390, "Referral — infographic … — mobile" (350×108, horizontal)
  *
- * The scene itself is static (identical to the Figma illustration). The only motion is the reward dots:
- * they travel against the arrows, towards You — right → left on desktop, bottom → top on mobile.
+ * The scene itself is static (identical to the Figma illustration). The only motion is the dots:
+ * they travel along the arrows, in the arrows' direction — You → Tier 1 → Tier 2, left to right.
  *
  * Usage:
  *   <div id="tiers"></div>
@@ -37,13 +37,13 @@
   // ---------------------------------------------------------------------------
   var FLOW = {
     loop: 6.0,     // seconds, seamless
-    every: 1.5,    // one Tier 2 dot and one Tier 1 dot per 1.5 s
-    leg2: 1.2,     // Tier 2 → Tier 1 (along arrow 2, against its direction)
+    every: 1.5,    // one dot from You and one from Tier 1 per 1.5 s
+    leg1: 1.1,     // along arrow 1: You → Tier 1
     pause: 0.2,    // hidden "under" Tier 1
-    leg1: 1.1,     // Tier 1 → You (along arrow 1)
-    tier1Offset: 0.75, // Tier 1 dots start half a period after Tier 2 dots
+    leg2: 1.2,     // along arrow 2: Tier 1 → Tier 2
+    tier1Offset: 0.75, // Tier 1 dots start half a period after the You dots
     fadeIn: 0.1,
-    fadeOut: 0.15  // last 15 % of the final leg
+    fadeOut: 0.15  // last 15 % of a leg that ends at an arrowhead
   };
   var N_DOTS = Math.round(FLOW.loop / FLOW.every); // 4 of each kind per loop
 
@@ -57,29 +57,29 @@
       tier1: { cx: 416, cy: 75.61, r: 26.06, gap: 33.88, stroke: 3.9, colors: [COLORS.yellow, COLORS.blue, COLORS.green] },
       tier2: { cx: 727.26, cy: 75.84, orbitR: 39.96, orbitStroke: 1.31, memberR: 15.77, memberStroke: 2.1 },
       arrows: [
-        { x1: 190.96, y1: 76.55, x2: 329.77, y2: 76.55, head: 10.5, labelX: 260.37, labelY: 53, anchor: 'middle' },
-        { x1: 502.22, y1: 76.55, x2: 641.03, y2: 76.55, head: 10.5, labelX: 571.63, labelY: 53, anchor: 'middle' }
+        { x1: 190.96, y1: 76.55, x2: 329.77, y2: 76.55, head: 10.5, labelX: 260.37, labelY: 53 },
+        { x1: 502.22, y1: 76.55, x2: 641.03, y2: 76.55, head: 10.5, labelX: 571.63, labelY: 53 }
       ],
       arrowStroke: 2.1,
       labels: { size: 18.93, items: [{ t: 'You', x: 104.74, y: 174 }, { t: 'Tier 1', x: 416, y: 174 }, { t: 'Tier 2', x: 727.26, y: 174 }] },
       inviteSize: 12.6,
-      dots: { small: 3.5, big: 4.5, halo: 2 },
+      dots: { r: 4, halo: 2 },
       shadowScale: 1
     },
-    mobile: { // vertical flow, elements at 0.8× desktop size
-      w: 350, h: 418,
-      you: { cx: 175, cy: 37, r: 37, stroke: 1.47 },
-      tier1: { cx: 175, cy: 187, r: 20.5, gap: 26.66, stroke: 3.07, colors: [COLORS.yellow, COLORS.blue, COLORS.green] },
-      tier2: { cx: 175, cy: 345, orbitR: 29.73, orbitStroke: 0.98, memberR: 11.73, memberStroke: 1.56 },
+    mobile: { // horizontal, elements at ~0.7× desktop size, arrows 43.5 px
+      w: 350, h: 108,
+      you: { cx: 32, cy: 42, r: 32, stroke: 1.27 },
+      tier1: { cx: 165, cy: 42, r: 18, gap: 23.4, stroke: 2.7, colors: [COLORS.yellow, COLORS.blue, COLORS.green] },
+      tier2: { cx: 308, cy: 42, orbitR: 28, orbitStroke: 0.92, memberR: 11, memberStroke: 1.47 },
       arrows: [
-        { x1: 175, y1: 112, x2: 175, y2: 156, head: 7, labelX: 191, labelY: 137.5, anchor: 'start' },
-        { x1: 175, y1: 246, x2: 175, y2: 290, head: 7, labelX: 191, labelY: 271.5, anchor: 'start' }
+        { x1: 72, y1: 42, x2: 115.5, y2: 42, head: 6, labelX: 93.75, labelY: 31 },
+        { x1: 214.5, y1: 42, x2: 258, y2: 42, head: 6, labelX: 236.25, labelY: 31 }
       ],
-      arrowStroke: 1.7,
-      labels: { size: 16, items: [{ t: 'You', x: 175, y: 97 }, { t: 'Tier 1', x: 175, y: 231 }, { t: 'Tier 2', x: 175, y: 413 }] },
-      inviteSize: 10,
-      dots: { small: 3, big: 4, halo: 1.75 },
-      shadowScale: 0.8
+      arrowStroke: 1.5,
+      labels: { size: 14, items: [{ t: 'You', x: 32, y: 104 }, { t: 'Tier 1', x: 165, y: 104 }, { t: 'Tier 2', x: 308, y: 104 }] },
+      inviteSize: 9,
+      dots: { r: 3.5, halo: 1.5 },
+      shadowScale: 0.7
     }
   };
 
@@ -93,10 +93,10 @@
     return n;
   }
   function lerp(a, b, p) { return [a[0] + (b[0] - a[0]) * p, a[1] + (b[1] - a[1]) * p]; }
-  // Dots run along the arrow lines only, from the arrowhead back to the arrow's start (towards You).
+  // Dots run along the arrow lines only, from each arrow's start to its head (the arrows' own direction).
   function flowPoints(L) {
     var a1 = L.arrows[0], a2 = L.arrows[1];
-    return { t2Exit: [a2.x2, a2.y2], t1Enter: [a2.x1, a2.y1], t1Exit: [a1.x2, a1.y2], youEnter: [a1.x1, a1.y1] };
+    return { a1Start: [a1.x1, a1.y1], a1End: [a1.x2, a1.y2], a2Start: [a2.x1, a2.y1], a2End: [a2.x2, a2.y2] };
   }
 
   // Person silhouette (head + shoulders), proportions from the Figma "Avatar" vectors
@@ -128,7 +128,7 @@
   function buildScene(L, uid, opts) {
     var svg = el('svg', {
       viewBox: '0 0 ' + L.w + ' ' + L.h, width: '100%', height: '100%', role: 'img',
-      'aria-label': 'Referral tiers: you invite Tier 1, Tier 1 invites Tier 2; rewards flow back to you',
+      'aria-label': 'Referral tiers: you invite Tier 1, Tier 1 invites Tier 2',
       style: 'display:block;overflow:visible'
     });
     var defs = el('defs', null, svg);
@@ -157,26 +157,26 @@
     // arrows + INVITES
     L.arrows.forEach(function (a) {
       var dx = a.x2 - a.x1, dy = a.y2 - a.y1, len = Math.sqrt(dx * dx + dy * dy), ux = dx / len, uy = dy / len;
-      var px = -uy, py = ux; // perpendicular
+      var px = -uy, py = ux;
       var bx = a.x2 - ux * a.head, by = a.y2 - uy * a.head, hw = a.head * 0.8;
       el('path', { d: 'M ' + a.x1 + ' ' + a.y1 + ' L ' + a.x2 + ' ' + a.y2, fill: 'none', stroke: COLORS.ink, 'stroke-width': L.arrowStroke, 'stroke-linecap': 'round' }, root);
       el('path', {
         d: 'M ' + (bx + px * hw) + ' ' + (by + py * hw) + ' L ' + a.x2 + ' ' + a.y2 + ' L ' + (bx - px * hw) + ' ' + (by - py * hw),
         fill: 'none', stroke: COLORS.ink, 'stroke-width': L.arrowStroke, 'stroke-linecap': 'round', 'stroke-linejoin': 'round'
       }, root);
-      el('text', { x: a.labelX, y: a.labelY, 'text-anchor': a.anchor, fill: COLORS.muted, 'font-size': L.inviteSize, 'font-weight': 500, 'letter-spacing': 0.04 * L.inviteSize }, root)
+      el('text', { x: a.labelX, y: a.labelY, 'text-anchor': 'middle', fill: COLORS.muted, 'font-size': L.inviteSize, 'font-weight': 500, 'letter-spacing': 0.04 * L.inviteSize }, root)
         .appendChild(document.createTextNode('INVITES'));
     });
 
-    // reward dots: above the arrow lines, below the nodes
+    // dots: above the arrow lines, below the nodes
     function dot(r) {
       var g = el('g', { opacity: 0 }, root);
       el('circle', { r: r + L.dots.halo, fill: opts.bg || '#fff' }, g);
       el('circle', { r: r, fill: COLORS.green }, g);
       return g;
     }
-    S.small = []; S.big = [];
-    for (var i = 0; i < N_DOTS; i++) { S.small.push(dot(L.dots.small)); S.big.push(dot(L.dots.big)); }
+    S.fromYou = []; S.fromTier1 = [];
+    for (var i = 0; i < N_DOTS; i++) { S.fromYou.push(dot(L.dots.r)); S.fromTier1.push(dot(L.dots.r)); }
 
     // You
     var Y = L.you;
@@ -216,25 +216,25 @@
   function hide(g) { g.setAttribute('opacity', 0); }
 
   function render(S, L, t) {
-    var F = flowPoints(L), i, age;
+    var F = flowPoints(L), i, age, p;
     for (i = 0; i < N_DOTS; i++) {
-      // Tier 2 dot: Tier 2 → Tier 1, pause, Tier 1 → You
+      // dot from You: arrow 1 → hidden under Tier 1 → arrow 2
       age = ((t - i * FLOW.every) % FLOW.loop + FLOW.loop) % FLOW.loop;
-      if (age < FLOW.leg2) {
-        place(S.small[i], lerp(F.t2Exit, F.t1Enter, age / FLOW.leg2), age / FLOW.fadeIn);
-      } else if (age < FLOW.leg2 + FLOW.pause) {
-        hide(S.small[i]);
-      } else if (age < FLOW.leg2 + FLOW.pause + FLOW.leg1) {
-        var p = (age - FLOW.leg2 - FLOW.pause) / FLOW.leg1;
-        place(S.small[i], lerp(F.t1Exit, F.youEnter, p), Math.min((age - FLOW.leg2 - FLOW.pause) / FLOW.fadeIn, (1 - p) / FLOW.fadeOut));
-      } else hide(S.small[i]);
-
-      // Tier 1 dot: Tier 1 → You
-      age = ((t - i * FLOW.every - FLOW.tier1Offset) % FLOW.loop + FLOW.loop) % FLOW.loop;
       if (age < FLOW.leg1) {
-        var q = age / FLOW.leg1;
-        place(S.big[i], lerp(F.t1Exit, F.youEnter, q), Math.min(age / FLOW.fadeIn, (1 - q) / FLOW.fadeOut));
-      } else hide(S.big[i]);
+        place(S.fromYou[i], lerp(F.a1Start, F.a1End, age / FLOW.leg1), age / FLOW.fadeIn);
+      } else if (age < FLOW.leg1 + FLOW.pause) {
+        hide(S.fromYou[i]);
+      } else if (age < FLOW.leg1 + FLOW.pause + FLOW.leg2) {
+        p = (age - FLOW.leg1 - FLOW.pause) / FLOW.leg2;
+        place(S.fromYou[i], lerp(F.a2Start, F.a2End, p), Math.min((age - FLOW.leg1 - FLOW.pause) / FLOW.fadeIn, (1 - p) / FLOW.fadeOut));
+      } else hide(S.fromYou[i]);
+
+      // dot from Tier 1: arrow 2 only
+      age = ((t - i * FLOW.every - FLOW.tier1Offset) % FLOW.loop + FLOW.loop) % FLOW.loop;
+      if (age < FLOW.leg2) {
+        p = age / FLOW.leg2;
+        place(S.fromTier1[i], lerp(F.a2Start, F.a2End, p), Math.min(age / FLOW.fadeIn, (1 - p) / FLOW.fadeOut));
+      } else hide(S.fromTier1[i]);
     }
   }
 
