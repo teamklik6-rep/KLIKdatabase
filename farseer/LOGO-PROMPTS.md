@@ -174,3 +174,33 @@ Cartoon sticker logo for "FARSEER", a meme-token launchpad, on a plain pure whit
 The attached image is a style reference only: take its bold black silhouettes and cheeky meme attitude; ignore its exact drawings and colours.
 Cartoon sticker logo for "FARSEER", a meme-token launchpad, on a plain pure white background. In the upper middle of the frame, a cheeky crystal-ball mascot drawn with thick even black outlines and flat colour fills: a round glass ball in vivid electric ultramarine blue with one curved white shine mark, two big white cartoon eyes looking up and to the right, and a wide mischievous grin. Inside the glass, behind the face, a thin white zig-zag price line climbs steeply to the upper right and ends in a small white four-pointed sparkle. The ball sits on a short black pedestal that is blasting off on a stubby cartoon rocket flame in yellow and orange, as if heading to the moon. A thick white sticker border runs around the whole silhouette. Below, the word "FARSEER" in chunky rounded bold cartoon letters, white fill with a thick black outline, fully legible. Palette: 40% electric ultramarine, 35% white, 15% black outlines, 10% yellow-orange flame as the only warm colour. Flat cel-shaded vector look with crisp edges. Front-on logo presentation with no mockup, no background scene, no shadow and no extra text.
 ```
+
+---
+
+## Стиль 4 — Емблеми / маскоти (дошка Figma node 27-48) — 3 промпти
+
+Прикріпити: **всі фото з секції** https://www.figma.com/design/WlfAK7sj1Fz1p623TUVlwD/Untitled?node-id=27-48 (або одним файлом `refs/REF-style4-emblem-board.png`). Модель: Banana Pro / Banana 2, 1:1, 2K.
+
+### E1 · Globe Seer
+Глобус із меридіанів, які в центрі стискаються в мигдалеподібне око з іскрою-зіницею: провидець, що бачить усі події світу. Кремове на чорному, з одним синім акцентом.
+
+```
+The attached images are a style reference board only: take their bold flat silhouettes, chunky emblem construction, limited two- or three-colour palettes and confident graphic weight; do not copy any of their symbols, animals, names, letters or trademarks.
+Flat vector emblem logo for "FARSEER", a prediction-market launchpad, on a seamless jet-black square background. In the upper middle of the frame, a bold circular globe in warm off-white: a thick outer ring with four curved meridian bands inside it that bow outward and pinch together at the top and bottom, and in the centre, where the two middle meridians open widest, they form an almond-shaped eye; inside the eye a solid vivid electric-ultramarine round iris with a crisp off-white four-pointed sparkle star as the pupil. All bands share one heavy even stroke weight, with clean black gaps between them. Below, with a comfortable gap, the wordmark "FARSEER" in warm off-white heavy wide grotesk capitals, perfectly centred. Palette: 70% jet black, 25% warm off-white, 5% electric ultramarine as the only colour accent. Crisp clean vector edges, perfect symmetry, generous margins. Front-on flat logo presentation with no mockup, no perspective, no shadow, no gradient, no glow and no extra text.
+```
+
+### E2 · Imp Mascot
+Пласка маскот-голова у профіль, як вовк Studio Leloup: рогатий хитрун-імп із самовдоволеним напівзаплющеним оком, зубчастою посмішкою і іскрою «третього ока» на лобі. Фірмовий ультрамарин на кремовому, з легким патерном іскор на фоні.
+
+```
+The attached images are a style reference board only: take their bold flat mascot construction, chunky friendly shapes, one-colour-on-cream palettes and heavy rounded lettering; do not copy any of their animals, symbols, names, letters or trademarks.
+Flat vector mascot logo for "FARSEER", a meme-token launchpad, on a warm cream background with a very faint tone-on-tone pattern of tiny four-pointed stars. In the upper middle of the frame, a chunky mascot head in profile facing right, drawn as one solid flat shape in vivid electric ultramarine: a cheeky horned imp with a long blunt snout, two short pointed horns swept back, a pointed ear, a smug half-closed eye drawn as a cream almond with a heavy lid line, and a wide grin showing a row of cream zig-zag teeth. On its forehead a small cream four-pointed sparkle star sits like a third eye. The neck ends in a clean straight cut at the bottom. Below, with a comfortable gap, the word "FARSEER" in chunky heavy rounded sans-serif capitals in the same electric ultramarine, friendly and perfectly legible, about as wide as the head. Palette: 65% warm cream, 35% electric ultramarine, strictly two colours. Crisp clean vector edges, bold readable silhouette. Front-on flat logo presentation with no mockup, no perspective, no shadow, no gradient and no extra text.
+```
+
+### E3 · Pump Burst
+Зубчастий чорний вибух-зірка з друкарською фактурою, в центрі вирізане біле око з іскрою-відблиском: «памп-вибух» + провидець. Чорне на яскраво-помаранчево-червоному, маленький знак ®.
+
+```
+The attached images are a style reference board only: take their bold flat silhouettes, rough printed-ink character, spiky burst shapes and strong single-colour backgrounds; do not copy any of their symbols, animals, names, letters or trademarks.
+Flat emblem logo for "FARSEER", a meme-token launchpad, on a seamless vivid orange-red square background. In the upper middle of the frame, a large jagged black starburst with about twelve sharp irregular spikes of different lengths, like an explosion, printed in solid black ink with a slightly rough letterpress edge and a few tiny speckles of missing ink inside the shape. Cut out of the centre of the burst, a white almond-shaped eye with a solid black round iris and a small white four-pointed star glint on the iris. A small black registered-trademark ® symbol sits near the upper-right spike. Below, with a comfortable gap, the word "FARSEER" in heavy condensed black grotesk capitals with the same slightly rough printed edge, perfectly centred and fully legible. Palette: 60% orange-red, 35% black, 5% white in the eye as the only light tone. Bold graphic poster feel. Front-on flat logo presentation with no mockup, no perspective, no shadow, no gradient and no extra text.
+```
