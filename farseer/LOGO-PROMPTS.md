@@ -120,3 +120,57 @@ Flat vector logo for "FARSEER" on a plain pure white background. In the upper mi
 The attached image is a style reference only: take its graffiti-stencil street attitude, solid black silhouettes and blackletter feel; do not copy its drawings.
 Flat vector logo for "FARSEER" on a plain pure white background. In the upper middle of the frame, an angular stencil-style demon glare built only from straight hard edges: on top, a thick black V-shaped brow blade that dips to a point in the centre and rises at both ends into sharp blade-like horn tips; directly below it, separated by a thin white gap, a black angular eye shape with an angry V-notched top edge and a flat trapezoid bottom; in its centre a white diamond-shaped iris with a thin black vertical diamond slit pupil. Three straight white stencil bridges cut through the brow, one vertical in the centre and one slanted on each side, exactly like a spray-paint stencil. Below, with a comfortable gap, the word "FARSEER" in black rock-poster blackletter capitals with sharp pointed spurs and barbs, about as wide as the mark, perfectly centred. Strictly black on white with crisp straight edges, a clean empty background around the mark with no dots, no splatter and no particles. Front-on flat logo presentation with no mockup, no perspective, no shadow, no gradient and no extra text.
 ```
+
+---
+
+## Нові концепти — 5 додаткових (фінтех / мем)
+
+Фірмовий колір для нових концептів: яскравий електричний ультрамарин + глибокий нічний navy + білий (бриф: «багато синього, фінтех/предикшн, свій колір»). Модель та налаштування ті самі: Banana Pro / Banana 2, 1:1, 2K.
+
+| Концепт | Напрям | Фото для прикріплення |
+|---|---|---|
+| N1 Odds Ring | фінтех | `REF-style1-minimal-board.png` |
+| N2 Curve F | фінтех / pump | `REF-style1-minimal-board.png` |
+| N3 Moon Eye | гібрид | `REF-style1-minimal-board.png` |
+| N4 Laser Owl | мем | `REF-style3-street-demon-board.png` |
+| N5 Crystal Ball | мем / pump.fun | `REF-style3-street-demon-board.png` |
+
+### N1 · Odds Ring (фінтех)
+Знак — кругова діаграма ймовірності: товсте кільце розділене на дві дуги YES/NO (довга синя і коротка біла), у центрі іскра, тож знак читається ще й як око. Чистий фінтех у фірмовому синьому.
+
+```
+The attached image is a style reference only: take its minimal flat geometric language and four-pointed sparkle vocabulary; ignore its black-and-white palette and use the colours described here; do not copy any of its symbols, letters or watermarks.
+Flat vector fintech brand logo for "FARSEER", a prediction-market launchpad, on a seamless deep midnight-navy square background. In the upper middle of the frame, a bold circular odds gauge: a thick ring split into two arcs with small clean gaps between them, a long vivid electric-ultramarine arc covering about two thirds of the circle and a shorter, thinner white arc covering the rest, like a YES/NO probability chart. In the exact centre of the ring, a crisp white four-pointed sparkle star with concave sides, so the whole sign also reads as an eye with a glinting pupil. Below, with a comfortable gap, the wordmark "FARSEER" in white uppercase geometric grotesk sans-serif, semibold, wide letter spacing, perfectly centred. Palette: 70% midnight navy, 20% electric ultramarine, 10% white. Crisp razor-clean edges, generous margins, premium fintech feel. Front-on flat logo presentation with no mockup, no perspective, no shadow, no gradient, no glow and no extra text.
+```
+
+### N2 · Curve F (фінтех / pump)
+Монограма F, верхня перекладина якої — експоненційна бондинг-крива, що злітає вгору й закінчується іскрою. Біле на електричному ультрамарині, без контейнера.
+
+```
+The attached image is a style reference only: take its minimal flat geometric language and four-pointed sparkle vocabulary; ignore its black-and-white palette and use the colours described here; do not copy any of its symbols, letters or watermarks.
+Flat vector monogram logo for "FARSEER", a crypto launchpad, on a seamless vivid electric-ultramarine square background. In the upper middle of the frame, a bold white capital F built from thick geometric strokes with rounded terminals: a straight vertical stem, a short straight middle arm, and a top arm drawn as a smooth exponential curve that starts flat at the stem and sweeps steeply up to the right like a bonding-curve price chart, ending in a crisp white four-pointed sparkle star at its tip. Below, with a comfortable gap, the wordmark "FARSEER" in white uppercase geometric grotesk sans-serif, bold, wide letter spacing, perfectly centred. Strictly two colours: white is the only colour on the blue field. Crisp clean edges, confident proportions, generous margins, premium crypto-fintech feel. Front-on flat logo presentation with no mockup, no container, no perspective, no shadow, no gradient, no glow and no extra text.
+```
+
+### N3 · Moon Eye (гібрид)
+Синій півмісяць, у западині якого біле око з іскрою-зіницею дивиться вгору-вправо: «to the moon» + провидець. Мінімалістично, але з мемним підтекстом.
+
+```
+The attached image is a style reference only: take its minimal flat geometric language and four-pointed sparkle vocabulary; ignore its black-and-white palette and use the colours described here; do not copy any of its symbols, letters or watermarks.
+Flat vector logo for "FARSEER", a prediction-market meme launchpad, on a seamless deep midnight-navy square background. In the upper middle of the frame, a large bold crescent moon in vivid electric ultramarine, opening to the right; nestled inside the hollow of the crescent, a white almond-shaped eye looking up and to the right, with a navy round iris and a small white four-pointed sparkle as its pupil, as if the moon itself is watching where the price goes. A second, tiny white four-pointed star floats just beyond the upper tip of the crescent. Below, with a comfortable gap, the wordmark "FARSEER" in white uppercase rounded geometric sans-serif, bold, wide letter spacing, perfectly centred. Palette: 70% midnight navy, 20% electric ultramarine, 10% white. Crisp clean vector edges, balanced composition, friendly but premium. Front-on flat logo presentation with no mockup, no perspective, no shadow, no gradient, no glow and no extra text.
+```
+
+### N4 · Laser Owl (мем)
+Мемний маскот: голова самовпевненої сови (бачить далеко і вночі) з лазерними очима — крипто-мем «laser eyes». Стікер із товстим контуром, тіло у фірмовому синьому.
+
+```
+The attached image is a style reference only: take its bold black silhouettes and cheeky street-meme attitude; ignore its exact drawings and colours.
+Cartoon sticker logo for "FARSEER", a meme-token launchpad, on a plain pure white background. In the upper middle of the frame, the front-facing head of a smug little owl mascot drawn with thick even black outlines and flat colour fills: a round head in vivid electric ultramarine blue, two short pointed ear tufts like tiny horns, a small yellow-orange beak, half-closed confident eyelids, and from both eyes two straight laser beams shooting diagonally up and out of frame in bright white-cyan with a thin ultramarine edge, the classic crypto laser-eyes meme. A thick white sticker border runs around the whole silhouette. Below, the word "FARSEER" in chunky rounded bold cartoon letters, white fill with a thick black outline, playful and perfectly legible. Palette: 45% white, 35% electric ultramarine, 15% black outlines, 5% yellow-orange beak as the only warm colour. Flat cel-shaded vector look with crisp edges, the laser beams are the only glowing element. Front-on logo presentation with no mockup, no background scene, no shadow and no extra text.
+```
+
+### N5 · Crystal Ball (мем / pump.fun)
+Хитра кришталева куля-провидиця з мультяшними очима й усмішкою, всередині — графік, що злітає до іскри, а підставка стартує на ракетному полум'ї «to the moon». Чиста енергія pump.fun, стікер.
+
+```
+The attached image is a style reference only: take its bold black silhouettes and cheeky meme attitude; ignore its exact drawings and colours.
+Cartoon sticker logo for "FARSEER", a meme-token launchpad, on a plain pure white background. In the upper middle of the frame, a cheeky crystal-ball mascot drawn with thick even black outlines and flat colour fills: a round glass ball in vivid electric ultramarine blue with one curved white shine mark, two big white cartoon eyes looking up and to the right, and a wide mischievous grin. Inside the glass, behind the face, a thin white zig-zag price line climbs steeply to the upper right and ends in a small white four-pointed sparkle. The ball sits on a short black pedestal that is blasting off on a stubby cartoon rocket flame in yellow and orange, as if heading to the moon. A thick white sticker border runs around the whole silhouette. Below, the word "FARSEER" in chunky rounded bold cartoon letters, white fill with a thick black outline, fully legible. Palette: 40% electric ultramarine, 35% white, 15% black outlines, 10% yellow-orange flame as the only warm colour. Flat cel-shaded vector look with crisp edges. Front-on logo presentation with no mockup, no background scene, no shadow and no extra text.
+```
